@@ -8,7 +8,10 @@ CappuccinoQuantity = 0
 EspressoQuantity = 0
 LatteQuantity = 0
 IcedCoffeeQuantity = 0
-OpType = 1
+Cappuccino = 0
+Espresso = 0
+Latte = 0
+IcedCoffee = 0
 OpType = input("Press 1 for New Order, press 0 for Daily Summary: ")
 if OpType == "0":
     print("Dine in Quantity: " + str(DineInQuantity))
@@ -30,13 +33,34 @@ else:
     Espresso = int(input("How many Espressos would you like? "))
     Latte = int(input("How many Lattes would you like? "))
     IcedCoffee = int(input("How many Iced Coffees would you like? "))
-    Cappuccino = Cappuccino * int(3)
-    Espresso = Espresso * int(2.25)
-    Latte = Latte * int(2.5)
-    IcedCoffee = IcedCoffee * int(2.5)
-    Total = Cappuccino + Espresso + Latte + IcedCoffee
-    TotalOrderGst = Total * int(1.1)
-    if DeliveryType == "2":
-        TotalOrderGst = TotalOrderGst * int(1.05)
-    print("Your total is " + Total + " and your grand total with Gst is " + TotalOrderGst)
-
+    while Cappuccino < 0 or Espresso < 0 or Latte < 0 or IcedCoffee < 0:
+        print("Please make sure all quantities are a full positive number or 0")
+        Cappuccino = 0
+        Espresso = 0
+        Latte = 0
+        IcedCoffee = 0
+        Cappuccino = int(input("How many Cappuccinos would you like? "))
+        Espresso = int(input("How many Espressos would you like? "))
+        Latte = int(input("How many Lattes would you like? "))
+        IcedCoffee = int(input("How many Iced Coffees would you like? "))
+    else:
+        CappuccinoCost = Cappuccino * int(3)
+        EspressoCost = Espresso * float(2.25)
+        LatteCost = Latte * float(2.5)
+        IcedCoffeeCost = IcedCoffee * float(2.5)
+        Total = CappuccinoCost + EspressoCost + LatteCost + IcedCoffeeCost
+        TotalOrderGst = Total * float(1.1)
+        TotalGst = TotalOrderGst - Total + TotalGst
+        if DeliveryType == "2":
+            TotalOrderGst = TotalOrderGst * float(1.05)
+            TakeAwayQuantity = TakeAwayQuantity + 1
+        else:
+            DineInQuantity = DineInQuantity + 1
+        print("Your total is $" + str(Total) + " and your grand total with Gst is $" + str(TotalOrderGst))
+        CappuccinoQuantity = CappuccinoQuantity + Cappuccino
+        EspressoQuantity = EspressoQuantity + Espresso
+        LatteQuantity = LatteQuantity + Latte
+        IcedCoffeeQuantity = IcedCoffeeQuantity + IcedCoffee
+        TotalCups = TotalCups + Cappuccino + Espresso + Latte + IcedCoffee
+        TotalOrders = TotalOrders + 1
+        TotalDayIncome = TotalDayIncome + TotalOrderGst
