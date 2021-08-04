@@ -68,7 +68,10 @@ while Restart != 1:
                 Currency2 = float(input("Currency insert here: $"))
                 Currency = Currency2 - Currency
                 Currency2 = 0
-            print("Here is your change: $" + str(Currency))
+            Currency = float(Currency) * float("-1")
+            round(Currency, 1)
+            print("Here is your change: $" + str(round(Currency, 2)))
+            print("recipite goes hererer") #edit this
             print("Thank you")
             CappuccinoQuantity = CappuccinoQuantity + Cappuccino
             EspressoQuantity = EspressoQuantity + Espresso
