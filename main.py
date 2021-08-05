@@ -16,16 +16,16 @@ Restart = 0
 while Restart != 1:
     OpType = input("Press 1 for New Order, press 0 for Daily Summary: ")
     if OpType == "0":
-        print("Dine in Quantity: " + str(DineInQuantity))
-        print("Take Away Quantity: " + str(TakeAwayQuantity))
-        print("Total Orders Today: " + str(TotalOrders))
-        print("Total Cups Today: " + str(TotalCups))
-        print("Total Daily Income: " + str(TotalDayIncome))
-        print("Total Daily Gst: " + str(TotalGst))
-        print("Cappuccino Quantity: " + str(CappuccinoQuantity))
-        print("Espresso Quantity: " + str(EspressoQuantity))
-        print("Latte Quantity: " + str(LatteQuantity))
-        print("Iced Coffee Quantity: " + str(IcedCoffeeQuantity))
+        print("Dine in Quantity: " + str(float(DineInQuantity)))
+        print("Take Away Quantity: " + str(float(TakeAwayQuantity)))
+        print("Total Orders Today: " + str(float(TotalOrders)))
+        print("Total Cups Today: " + str(float(TotalCups)))
+        print("Total Daily Income: " + str(float(TotalDayIncome)))
+        print("Total Daily Gst: " + str(float(TotalGst)))
+        print("Cappuccino Quantity: " + str(float(CappuccinoQuantity)))
+        print("Espresso Quantity: " + str(float(EspressoQuantity)))
+        print("Latte Quantity: " + str(float(LatteQuantity)))
+        print("Iced Coffee Quantity: " + str(float(IcedCoffeeQuantity)))
     else:
         DeliveryType = input("Press 1 for Dine in, press 2 for Take Away: ")
         print("Our menu includes Cappuccinos, Espressos, Lattes and Iced Coffees")
@@ -56,6 +56,10 @@ while Restart != 1:
             if DeliveryType == "2":
                 TotalOrderGst = TotalOrderGst * float(1.05)
                 TakeAwayQuantity = TakeAwayQuantity + 1
+                CapDel = CappuccinoCost * float(1.05)
+                EspDel = EspressoCost * float(1.05)
+                LatDel = LatteCost * float(1.05)
+                IceDel = IcedCoffeeCost * float(1.05)
             else:
                 DineInQuantity = DineInQuantity + 1
             print("Your total is $" + str(Total) + " and your grand total with Gst is $" + str(TotalOrderGst))
@@ -71,7 +75,19 @@ while Restart != 1:
             Currency = float(Currency) * float("-1")
             round(Currency, 1)
             print("Here is your change: $" + str(round(Currency, 2)))
-            print("recipite goes hererer") #edit this
+            print("Here is your receipt")
+            CapGst = CappuccinoCost * float("1.1") - CappuccinoCost
+            EspGst = EspressoCost * float("1.1") - EspressoCost
+            LatGst = LatteCost * float("1.1") - LatteCost
+            IceGst = IcedCoffeeCost * float("1.1") - IcedCoffeeCost
+            CapFull = CappuccinoCost + CapGst + CapDel
+            EspFull = EspressoCost + EspGst + EspDel
+            LatFull = LatteCost + LatGst + LatDel
+            IceFull = IcedCoffeeCost + IceGst + IceDel
+            print(str(round(Cappuccino,2)) + ", Cappuccino , $" + str(round(CappuccinoCost,2)) + ", gst $" + str(round(CapGst,2)) + ", full price $" + str(round(CapFull,2)))
+            print(str(round(Espresso,2)) + ", Espresso , $" + str(round(EspressoCost,2)) + ", gst $" + str(round(EspGst,2)) + ", full price $" + str(round(EspFull,2)))
+            print(str(round(Latte,2)) + ", Latte , $" + str(round(LatteCost,2)) + ", gst $" + str(round(LatGst,2)) + ", full price $" + str(round(LatFull,2)))
+            print(str(round(IcedCoffee,2)) + ", IcedCoffee , $" + str(round(IcedCoffeeCost,2)) + ", gst $" + str(round(IceGst,2)) + ", full price $" + str(round(IceFull,2)))
             print("Thank you")
             CappuccinoQuantity = CappuccinoQuantity + Cappuccino
             EspressoQuantity = EspressoQuantity + Espresso
