@@ -13,7 +13,20 @@ Espresso = 0
 Latte = 0
 IcedCoffee = 0
 Restart = 0
+
 while Restart != 1:
+    CapDel = 0
+    EspDel = 0
+    LatDel = 0
+    IceDel = 0
+    CapGst = 0
+    EspGst = 0
+    LatGst = 0
+    IceGst = 0
+    CapFull = 0
+    EspFull = 0
+    LatFull = 0
+    IceFull = 0
     OpType = input("Press 1 for New Order, press 0 for Daily Summary: ")
     if OpType == "0":
         print("Dine in Quantity: " + str(float(DineInQuantity)))
@@ -62,6 +75,10 @@ while Restart != 1:
                 IceDel = IcedCoffeeCost * float(1.05)
             else:
                 DineInQuantity = DineInQuantity + 1
+                CapDel = 0
+                EspDel = 0
+                LatDel = 0
+                IceDel = 0
             print("Your total is $" + str(Total) + " and your grand total with Gst is $" + str(TotalOrderGst))
 
             print("Enter cash now")
