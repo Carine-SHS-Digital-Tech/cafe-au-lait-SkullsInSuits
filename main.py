@@ -87,7 +87,7 @@ while Restart != 1:
             while Currency > 0:
                 print("Not enough inserted, you need another $" + str(Currency))
                 Currency2 = float(input("Currency insert here: $"))
-                Currency = Currency - Currency1
+                Currency = Currency - Currency2
                 Currency2 = 0
             Currency = float(Currency) * float("-1")
             round(Currency, 1)
